@@ -1,0 +1,48 @@
+@charset "utf-8";
+/* CSS Document */
+html,body,ol,ul,dl,dd,dt,p,h1,h2,h3,h4,h5,h6,input,textarea,select,form,fieldset,legend,img{
+	margin:0;
+	padding:0;	
+}
+body{
+	font:0.2rem "宋体" ,"Arial Narrow",HELVETICA;background:#fff;
+	color: #989898;	 	
+}
+fieldset,img{
+	border:none;	
+}
+img{
+	display:block;
+	border:0;	
+}
+a{
+	text-decoration:none;
+	color: #989898;		
+}
+i,em{
+	font-style:normal;	
+}
+strong{
+	font-weight:normal;	
+}
+ul,ol,li{
+	list-style:none;	
+}
+.clearfixed:after{
+	display:block;
+	content:" ";
+	overflow:hidden;
+	visibility:hidden;
+	clear:both;
+	height:0;	
+}
+
+
+
+
+
+
+
+
+
+

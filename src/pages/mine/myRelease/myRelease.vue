@@ -1,0 +1,29 @@
+<template>
+<div>
+    <app-header :title="conten">
+    </app-header>
+    <app-content>
+        <h1>我的发布页面</h1>
+    
+    </app-content>
+</div>
+</template>
+<script>
+export default {
+    data(){
+        return{
+            conten:{
+                left:'我的发布',
+                show:false,
+                rightshow:false,
+                arrowright:true,
+                showleft:true,
+                searchDetails:false,
+                id:1
+            }
+        }
+    }
+}
+</script>
+<style scoped>
+</style>
