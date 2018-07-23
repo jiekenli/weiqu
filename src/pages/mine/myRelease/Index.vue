@@ -1,9 +1,9 @@
 <template>
 <div>
-    <app-header :title="conten">
+    <app-header :title="conten" id="myRelease">
     </app-header>
     <app-content>
-        <h1>提现页面</h1>
+        <h1>我的发布页面</h1>
     
     </app-content>
 </div>
@@ -13,16 +13,18 @@ export default {
     data(){
         return{
             conten:{
-                left:'提现',
+                left:'我的发布',
                 show:false,
                 rightshow:false,
                 arrowright:true,
                 showleft:true,
-                searchDetails:false
+                searchDetails:false,
+                id:1
             }
         }
     }
 }
 </script>
 <style scoped>
+/* #myRelease{background:#fff;width:100%;height:100%;z-index: 6} */
 </style>
