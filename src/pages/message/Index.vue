@@ -6,7 +6,6 @@
         <h1>消息</h1>
     
     </app-content>
-    <app-foot></app-foot>
 </div>
 
 </template>

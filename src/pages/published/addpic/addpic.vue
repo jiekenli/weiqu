@@ -2,9 +2,11 @@
 <div>
     <app-header :title="conten">
     </app-header>
+    <div @click="jupUp" class="up">完成</div>
     <app-content>
-        <h1>使用说明页面</h1>
-    
+        <div>
+            
+        </div>
     </app-content>
 </div>
 </template>
@@ -13,7 +15,7 @@ export default {
     data(){
         return{
             conten:{
-                left:'使用说明',
+                left:'照片',
                 show:false,
                 rightshow:false,
                 arrowright:true,
@@ -21,8 +23,11 @@ export default {
                 searchDetails:false
             }
         }
+    },
+    methods:{
+        jupUp(){
+            this.$router.push('/published')
+        }
     }
 }
 </script>
-<style scoped>
-</style>

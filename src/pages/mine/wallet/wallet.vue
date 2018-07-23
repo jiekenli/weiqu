@@ -23,8 +23,7 @@ export default {
                 rightshow:false,
                 arrowright:true,
                 showleft:true,
-                searchDetails:false,
-                id:1
+                searchDetails:false
             }
         }
     },
