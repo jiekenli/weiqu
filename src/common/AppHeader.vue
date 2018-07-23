@@ -52,6 +52,9 @@ export default {
         this.showFlag = flag;
         //判断这个页面是否拥有了可展示的数据，如果没有，需要请求
         // this.getInitData();
+        
+        //触发消息和私信页面切换事件的传值
+        this.$emit('handleNotice',flag)
         },
         gohome(){
             if(!this.title.id){
