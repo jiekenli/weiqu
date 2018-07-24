@@ -47,8 +47,8 @@ export default {
     },
     methods: {
         navAction(flag){
-        //切换正在热映和即将上映的界面
-        console.log('点击了')
+        //切换界面
+        this.$pubsub.$emit('show-page',flag)
         this.showFlag = flag;
         //判断这个页面是否拥有了可展示的数据，如果没有，需要请求
         // this.getInitData();
