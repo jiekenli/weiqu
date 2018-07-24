@@ -1,5 +1,5 @@
 <template>
-<div class="pages">
+<div class="pages bg1">
     <app-header :title="conten" >
     </app-header>
     <app-content class="pageContent">

@@ -1,6 +1,6 @@
 
 const state = {
-    username:123,
+    username:null,
     useId:null,
     password:null,
     sex:null

@@ -1,6 +1,6 @@
 <template>
-<div class="pages bg1">
-    <!-- <router-view></router-view>   -->
+<div class="page bg1">
+    <router-view></router-view>  
     <app-header :title="conten">
     </app-header>
     <app-content  id="pageContent">

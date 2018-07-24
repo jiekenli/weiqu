@@ -1,7 +1,7 @@
 <template>
+<div>
 
-
-    
+    <router-view></router-view>
     <app-content id="mycontent">
         <div id="mytop">
             <!-- <div id="scrollSet" @click="juptoSet"><img src="img/xhdpi/安卓 copy 10.png"></div> -->
@@ -46,7 +46,7 @@
         <!-- </div>  -->
     </app-content>
    <!-- <app-foot></app-foot> -->
-
+</div>
 </template>
 <script>
 import Vuex from 'vuex';

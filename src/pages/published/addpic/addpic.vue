@@ -1,9 +1,12 @@
 <template>
-<div class="pages bg1">
+<div>
     <app-header :title="conten">
     </app-header>
+    <div @click="jupUp" class="up">完成</div>
     <app-content>
-        <p class="detail">具体使用说明文档</p>
+        <div>
+            
+        </div>
     </app-content>
 </div>
 </template>
@@ -12,7 +15,7 @@ export default {
     data(){
         return{
             conten:{
-                left:'使用说明',
+                left:'照片',
                 show:false,
                 rightshow:false,
                 arrowright:true,
@@ -20,9 +23,11 @@ export default {
                 searchDetails:false
             }
         }
+    },
+    methods:{
+        jupUp(){
+            this.$router.push('/published')
+        }
     }
 }
 </script>
-<style scoped>
-.detail{margin:.065rem .15rem;background:#fff;padding:.17rem .08rem;color:#424242;font-size:.15rem;line-height:.175rem;box-sizing: border-box;}
-</style>

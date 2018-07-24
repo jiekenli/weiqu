@@ -60,7 +60,7 @@ export default {
          console.log(this.username,this.$refs.tel.value)
         },
         goAgreementAction(){
-            this.$router.push({name:"agreement"})
+            this.$router.push({name:"loginAgreement"})
         }
        
     },

@@ -1,15 +1,18 @@
 <template>
-<div id="pages">
-    <app-header :title="conten" >
-    </app-header>
-    <div @click="jupUp" class="up">充值</div>
-    <app-content>
-        <div class="money"><span>余额</span><i>10.00</i></div>
-        <div class="money" @click="gotomoney">
-            <span>提现</span>
-            <img src="img/xhdpi/right copy 48.png">
-        </div>
-    </app-content>
+<div>
+    <router-view></router-view>
+    <div class="page bg1">
+        <app-header :title="conten" >
+        </app-header>
+        <div @click="jupUp" class="up">充值</div>
+        <app-content>
+            <div class="money"><span>余额</span><i>10.00</i></div>
+            <div class="money" @click="gotomoney">
+                <span>提现</span>
+                <img src="img/xhdpi/right copy 48.png">
+            </div>
+        </app-content>
+    </div>
 </div>
 </template>
 <script>
@@ -22,17 +25,16 @@ export default {
                 rightshow:false,
                 arrowright:true,
                 showleft:true,
-                searchDetails:false,
-                id:1
+                searchDetails:false
             }
         }
     },
     methods:{
         jupUp(){
-            this.$router.push('/jupUp')
+            this.$router.push({name:'recharge'})
         },
         gotomoney(){
-            this.$router.push('/gotomoney')
+            this.$router.push({name:'gotomoney'})
         }
     }
 }

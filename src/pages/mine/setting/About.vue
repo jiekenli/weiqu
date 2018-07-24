@@ -1,20 +1,20 @@
 <template>
 <div>
-    <!-- <router-view></router-view> -->
-<div class="pages bg1">
-    <app-header :title="conten">
-    </app-header>
-    <app-content id="pageContent">
-        <div class="about-top">
-            <img src="img/xhdpi/安卓 copy 16.png" />
-            <p>v 1.0</p>
-        </div>
-       <ul class="mine-box">
-           <li class="mine-box-item" v-for="item in aboutList" :key="item.title" @click="goAboutListAction(item.name)"><span>{{item.title}}</span><img  src="img/xhdpi/right copy 48.png"></li>
-       </ul>
+    <router-view></router-view>
+    <div class="page bg1">
+        <app-header :title="conten">
+        </app-header>
+        <app-content id="pageContent">
+            <div class="about-top">
+                <img src="img/xhdpi/安卓 copy 16.png" />
+                <p>v 1.0</p>
+            </div>
+        <ul class="mine-box">
+            <li class="mine-box-item" v-for="item in aboutList" :key="item.title" @click="goAboutListAction(item.name)"><span>{{item.title}}</span><img  src="img/xhdpi/right copy 48.png"></li>
+        </ul>
 
-    </app-content>
-</div>
+        </app-content>
+    </div>
 </div>
 </template>
 <script>

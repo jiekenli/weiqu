@@ -1,15 +1,18 @@
 <template>
-<div class="pages bg1">
-    <app-header :title="conten">
-    </app-header>
-    <app-content>
-        <ul class="helpBox">
-            <li v-for="(item,i) in list" :key="i" @click="helpAction(item.name)">
-                <img :src="item.imgSrc">
-                <p>{{item.title}}</p>
-            </li>
-        </ul>
-    </app-content>
+<div>
+    <router-view></router-view>
+    <div class="page bg1">
+        <app-header :title="conten">
+        </app-header>
+        <app-content>
+            <ul class="helpBox">
+                <li v-for="(item,i) in list" :key="i" @click="helpAction(item.name)">
+                    <img :src="item.imgSrc">
+                    <p>{{item.title}}</p>
+                </li>
+            </ul>
+        </app-content>
+    </div>
 </div>
 </template>
 <script>

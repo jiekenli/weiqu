@@ -59,40 +59,7 @@ export default {
         // this.getInitData();
         },
         gohome(){
-            if(!this.title.id){
-                this.$router.push({
-                    //配置文件content中的name匹配值
-                    name: 'home',
-                    // params: {
-                    //     flag
-                    // }
-                })
-            }else if(this.title.id==1){
-                this.$router.push({
-                    //配置文件content中的name匹配值
-                    name: 'mine',
-                    // params: {
-                    //     flag
-                    // }
-                })
-            }else if(this.title.id==2){
-                this.$router.push({
-                    //配置文件content中的name匹配值
-                    name: 'help',
-                    // params: {
-                    //     flag
-                    // }
-                })
-            }else if(this.title.id==3){
-                this.$router.push({
-                    //配置文件content中的name匹配值
-                    name: 'wallet',
-                    // params: {
-                    //     flag
-                    // }
-                })
-            }
-             
+            this.$router.go(-1);
         },
         serch(){
             this.$router.push({
