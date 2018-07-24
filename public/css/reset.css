@@ -1,11 +1,11 @@
 @charset "utf-8";
 /* CSS Document */
-html,body,ol,ul,dl,dd,dt,p,h1,h2,h3,h4,h5,h6,input,textarea,select,form,fieldset,legend,img,label{
+html,body,ol,ul,dl,dd,dt,p,h1,h2,h3,h4,h5,h6,input,textarea,select,form,fieldset,legend,img{
 	margin:0;
 	padding:0;	
 }
 body{
-	font:0.2rem "微软雅黑" ,"Arial Narrow",HELVETICA;background:#fff;
+	font:0.2rem "宋体" ,"Arial Narrow",HELVETICA;background:#fff;
 	color: #989898;	 	
 }
 fieldset,img{
@@ -37,7 +37,7 @@ ul,ol,li{
 	height:0;	
 }
 
-input{outline: none;}
+
 
 
 
