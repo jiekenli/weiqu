@@ -19,7 +19,6 @@ Vue.component('app-foot', foot);
 Vue.config.productionTip = false
 new Vue({
     router,
-    store,
     components: {
         App
     },
