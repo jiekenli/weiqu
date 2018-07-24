@@ -25,7 +25,6 @@ export default {
                 arrowright:true,
                 showleft:true,
                 searchDetails:false,
-                id:1
             }
         }
     },

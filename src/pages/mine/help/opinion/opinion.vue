@@ -19,8 +19,7 @@ export default {
                 rightshow:false,
                 arrowright:true,
                 showleft:true,
-                searchDetails:false,
-                id:2
+                searchDetails:false
             }
         }
     },

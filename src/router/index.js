@@ -9,6 +9,9 @@ import message from '../pages/message/Index.vue'
 import Mine from '../pages/mine/Index.vue'
 import serch from '../pages/home/serch/serch.vue'
 
+//发表页面相关路由
+import addpic from '../pages/published/addpic/addpic.vue'
+
 // 我的页面相关路由
 import myRelease from '../pages/mine/myRelease/myRelease.vue'
 import collection from '../pages/mine/collection/collection.vue'
@@ -124,6 +127,11 @@ const routes = [
         name: 'gotoLogin',
         path: '/gotoLogin',
         component: gotoLogin
+    },
+    {
+        name: 'addpic',
+        path: '/addpic',
+        component: addpic
     },
     {
         path: '**',

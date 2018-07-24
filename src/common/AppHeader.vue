@@ -47,47 +47,14 @@ export default {
     },
     methods: {
         navAction(flag){
-        //切换正在热映和即将上映的界面
-        console.log('点击了')
+        //切换界面
+        this.$pubsub.$emit('show-page',flag)
         this.showFlag = flag;
         //判断这个页面是否拥有了可展示的数据，如果没有，需要请求
         // this.getInitData();
         },
         gohome(){
-            if(!this.title.id){
-                this.$router.push({
-                    //配置文件content中的name匹配值
-                    name: 'home',
-                    // params: {
-                    //     flag
-                    // }
-                })
-            }else if(this.title.id==1){
-                this.$router.push({
-                    //配置文件content中的name匹配值
-                    name: 'mine',
-                    // params: {
-                    //     flag
-                    // }
-                })
-            }else if(this.title.id==2){
-                this.$router.push({
-                    //配置文件content中的name匹配值
-                    name: 'help',
-                    // params: {
-                    //     flag
-                    // }
-                })
-            }else if(this.title.id==3){
-                this.$router.push({
-                    //配置文件content中的name匹配值
-                    name: 'wallet',
-                    // params: {
-                    //     flag
-                    // }
-                })
-            }
-             
+            this.$router.go(-1);
         },
         serch(){
             this.$router.push({

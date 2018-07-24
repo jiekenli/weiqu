@@ -3,75 +3,83 @@
     <app-header :title="conten">
     </app-header>
     <app-content>
-    <ul class="list">
-        <li class="item">
-            <div class="top">
-                <div class="head-img-wrap">
-                    <span class="head-img">
-                        <img src="../../../public/img/xhdpi/home-prc1.png">
-                    </span>
-                    <div class="top-middle">
-                        <p class="title">微趣小可爱</p>
-                        <p class="time">2018.03.02</p>
+
+   
+
+
+    <div v-show="page=='recommended'">
+        <ul class="list">
+            <li class="item">
+                <div class="top">
+                    <div class="head-img-wrap">
+                        <span class="head-img">
+                            <img src="../../../public/img/xhdpi/home-prc1.png">
+                        </span>
+                        <div class="top-middle">
+                            <p class="title">微趣小可爱</p>
+                            <p class="time">2018.03.02</p>
+                        </div>
                     </div>
+                    <div class="arrow-wrap " @click="tabAct">
+                        <span class="iconfont icon-arrow-down"></span>
+                        <ul class="tab-list" v-show="tabShow">
+                            <li class="tab-line"></li>
+                            <li class="tab-item">关注</li>
+                            <li class="tab-item">我不感兴趣</li>
+                        </ul>
+                    </div>
+                </div> 
+                <div class="text">
+                    lucky李乐祺，简直是化妆品狂魔啊！看见妈妈在化妆，眼睛一下就发光了哈哈哈！“妈妈我要这个粉饼口红睫毛！”lucky大名也曝光啦，叫李乐祺。lucky大名也曝光啦，叫李乐祺。
                 </div>
-                <div class="arrow-wrap " @click="tabAct">
-                    <span class="iconfont icon-arrow-down"></span>
-                    <ul class="tab-list" v-show="tabShow">
-                        <li class="tab-line"></li>
-                        <li class="tab-item">关注</li>
-                        <li class="tab-item">我不感兴趣</li>
-                    </ul>
-                </div>
-            </div> 
-            <div class="text">
-                lucky李乐祺，简直是化妆品狂魔啊！看见妈妈在化妆，眼睛一下就发光了哈哈哈！“妈妈我要这个粉饼口红睫毛！”lucky大名也曝光啦，叫李乐祺。lucky大名也曝光啦，叫李乐祺。
-            </div>
-            <ul class="img-list">
-                <li class="img-item">
-                    <img src="../../../public/img/xhdpi/home-prc1.png">
-                </li>
-                <li class="img-item">
-                    <img src="../../../public/img/xhdpi/home-prc1.png">
-                </li>
-                <li class="img-item">
-                    <img src="../../../public/img/xhdpi/home-prc1.png">
-                </li>
-            </ul>
-            <ul class="btn-list">
-                <li class="btn-item">
-                    <span class="img">
-                        <img src="../../../public/img/xhdpi/安卓 copy 37.png" alt="">
-                    </span>
-                    <span class="btn-text">520</span>
-                    <span class="btn-line"></span>
-                </li>
-                <li class="btn-item">
-                    <span class="img">
-                        <img src="../../../public/img/xhdpi/安卓 copy 35.png" alt="">
-                    </span>
-                    <span class="btn-text">520</span>
-                    <span class="btn-line"></span>
-                </li>
-                <li class="btn-item">
-                    <span class="img">
-                        <img src="../../../public/img/xhdpi/安卓 copy 7.png" alt="">
-                    </span>
-                    <span class="btn-text">520</span>
-                    <span class="btn-line"></span>
-                </li>
-                <li class="btn-item">
-                    <span class="img">
-                        <img src="../../../public/img/xhdpi/安卓 copy 33.png" alt="">
-                    </span>
-                    <span class="btn-text">520</span>
-                </li>
-            </ul>
-        </li>
-    </ul>
+                <ul class="img-list">
+                    <li class="img-item">
+                        <img src="../../../public/img/xhdpi/home-prc1.png">
+                    </li>
+                    <li class="img-item">
+                        <img src="../../../public/img/xhdpi/home-prc1.png">
+                    </li>
+                    <li class="img-item">
+                        <img src="../../../public/img/xhdpi/home-prc1.png">
+                    </li>
+                </ul>
+                <ul class="btn-list">
+                    <li class="btn-item">
+                        <span class="img">
+                            <img src="../../../public/img/xhdpi/安卓 copy 37.png" alt="">
+                        </span>
+                        <span class="btn-text">520</span>
+                        <span class="btn-line"></span>
+                    </li>
+                    <li class="btn-item">
+                        <span class="img">
+                            <img src="../../../public/img/xhdpi/安卓 copy 35.png" alt="">
+                        </span>
+                        <span class="btn-text">520</span>
+                        <span class="btn-line"></span>
+                    </li>
+                    <li class="btn-item">
+                        <span class="img">
+                            <img src="../../../public/img/xhdpi/安卓 copy 7.png" alt="">
+                        </span>
+                        <span class="btn-text">520</span>
+                        <span class="btn-line"></span>
+                    </li>
+                    <li class="btn-item">
+                        <span class="img">
+                            <img src="../../../public/img/xhdpi/安卓 copy 33.png" alt="">
+                        </span>
+                        <span class="btn-text">520</span>
+                    </li>
+                </ul>
+            </li>
+        </ul>
+    </div>
+    <div v-show="page=='special'">
+        <h1>特别关注</h1>
+    </div> 
 
     </app-content>
-    <app-foot></app-foot>
 </div>
 
 </template>
@@ -79,6 +87,7 @@
 export default {
     data(){
         return{
+            page:'recommended',
             t:'red',
             conten:{
                 left:'推荐',
@@ -92,13 +101,16 @@ export default {
             tabShow: false
         }
     },
+
     methods: {
         tabAct () {
             this.tabShow = !this.tabShow;
         }
     },
-    mounted () {
-
+    mounted(){
+        this.$pubsub.$on('show-page',(data)=>{
+            this.page=data
+        })
     }
 }
 </script>
