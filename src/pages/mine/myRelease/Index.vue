@@ -1,24 +1,22 @@
 <template>
 <div>
-    <app-header :title="conten">
+    <app-header :title="conten" id="myRelease">
     </app-header>
     <app-content>
-        <h1>消息</h1>
+        <h1>我的发布页面</h1>
     
     </app-content>
 </div>
-
 </template>
 <script>
 export default {
     data(){
         return{
             conten:{
-                left:'通知',
-                right:'私信',
+                left:'我的发布',
                 show:false,
-                rightshow:true,
-                arrowright:false,
+                rightshow:false,
+                arrowright:true,
                 showleft:true,
                 searchDetails:false
             }
@@ -26,3 +24,6 @@ export default {
     }
 }
 </script>
+<style scoped>
+/* #myRelease{background:#fff;width:100%;height:100%;z-index: 6} */
+</style>

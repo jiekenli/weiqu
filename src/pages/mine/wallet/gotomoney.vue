@@ -1,24 +1,22 @@
 <template>
-<div>
+<div class="pages bg1">
     <app-header :title="conten">
     </app-header>
-    <app-content>
-        <h1>消息</h1>
+    <app-content  id="pageContent">
+        <h1>提现页面</h1>
     
     </app-content>
 </div>
-
 </template>
 <script>
 export default {
     data(){
         return{
             conten:{
-                left:'通知',
-                right:'私信',
+                left:'提现',
                 show:false,
-                rightshow:true,
-                arrowright:false,
+                rightshow:false,
+                arrowright:true,
                 showleft:true,
                 searchDetails:false
             }
@@ -26,3 +24,5 @@ export default {
     }
 }
 </script>
+<style scoped>
+</style>

@@ -30,7 +30,8 @@ export default {
         scroll.on('beforeScrollStart', ()=>{
             scroll.refresh();
         });
-
+        
+    
         if(this.reciveScroll){
             //外部调用时，需要接收滚动事件，就添加正在滚动的监听。
             scroll.on('scroll', ()=>{
@@ -50,7 +51,7 @@ export default {
     position: absolute;
     top: 0.47rem;
     left: 0;
-    bottom: 0;
+    bottom:  0.61rem;
     overflow: hidden;
 }
     #arrow{
