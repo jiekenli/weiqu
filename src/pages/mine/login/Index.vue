@@ -12,8 +12,9 @@
             </label>
             <label>
                 <input type="text" class="inp" @blur="getCodeAction" ref="authCode" placeholder="请输入验证码">
-                <p class="verification-code"  @click="getCode()"><span>获取验证码</span>
-                <i ref="timeNum">30</i></p>
+                <!-- <p class="verification-code" ref="codeBtn" @click="getCode()"><span>获取验证码</span>
+                <i ref="timeNum">30</i></p> -->
+                <input type="button" class="verification-code" ref="getCodeBtn" @click="getCode"  value="获取验证码"/>
                 <p class="prompt" ref="codePrompt">验证码错误</p>
             </label>
             <!-- <p class="regist">还没注册？点击<a @click="goRegisterAction">注册</a></p> -->
@@ -54,21 +55,19 @@ export default {
              }
         },
         // 点击倒计时 获取验证码   
-        getCode(){
-            
-            if(this.$refs.tel.value){
-                this.$refs.timeNum.style.display="block";
-                this.$refs.timeNum.previousElementSibling.innerHTML="倒计时：";
-                let timer=null;
-                clearInterval(timer);
+        getCode(){            
+            if(this.$refs.tel.value){                        
+                let timer=null;          
                 let time=30;
                 timer= setInterval(()=>{
-                    time--;              
-                    this.$refs.timeNum.innerHTML=time+"s";
-                    if(time==0){
+                    if(time==1){
                         clearInterval(timer);
-                        this.$refs.timeNum.style.display="none";
-                        this.$refs.timeNum.previousElementSibling.innerHTML="获取验证码";
+                        this.$refs.getCodeBtn.value='获取验证码';
+                        this.$refs.getCodeBtn.removeAttribute("disabled");
+                    }else{
+                        time--;              
+                         this.$refs.getCodeBtn.value='重新发送'+time+"s";
+                         this.$refs.getCodeBtn.setAttribute("disabled",true);
                     }
                 },1000)
                 getAuthCode(this.$refs.tel.value).then(res=>{
@@ -76,11 +75,9 @@ export default {
                     this.codeVal=res.data;
                     this.$refs.codePrompt.innerText=res.data;
                 })
-                // console.log(this.$refs.tel.value)
             }else{
                 this.$refs.telPrompt.innerText="请输入手机号码";
-            }
-            
+            }            
         },
         // 验证码
         getCodeAction(){
@@ -100,7 +97,7 @@ export default {
             
              this.$store.dispatch("user/modifyUsername",this.$refs.tel.value)
              console.log(this.username)
-            this.$router.push("/")
+            this.$router.push('/')
             }
            
         },
@@ -131,7 +128,7 @@ export default {
 .loginForm .inp{width:100%;display:block;border-radius:.24rem;height:100%;padding:0 .18rem;box-sizing: border-box;line-height:.48rem;color:#666;font-size:.14rem;border:1px solid #60A7FF;}
 .prompt{font-size: 0.08rem;color:red;}
 .loginBtn{background:#60a7ff;display:block;width:100%;height:.48rem;font-size:.15rem;color:#fff;line-height:.48rem;border-radius:.24rem;}
-.verification-code{font-size:0.12rem;position: absolute;right:0;top:0;color:#ccc;line-height:.48rem;display: flex;width:.78rem;}
+.verification-code{font-size:0.12rem;position: absolute;right:0;top:0;color:#ccc;line-height:.48rem;display: flex;width:.78rem;border:0;background:none;outline: none;}
 .verification-code i{display: none;color:#333;}
 .tips{position:absolute;bottom:0rem;font-size: .06rem;width:100%;text-align:center;color:#999;}
 .tips a{color:#60a7ff;font-size:.09rem;}

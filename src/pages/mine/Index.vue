@@ -23,7 +23,7 @@
                 </dd>
             </dl>
             <!-- 未登录 -->
-            <dl v-if="noLogin"  class="loginTop">
+            <dl v-if="notLogin"  class="loginTop">
                 <dt @click="goLoginAction">
                     <img src="img/xhdpi/headerImg.png" class="noLoginImg"></dt>
                 <dd>
@@ -72,7 +72,7 @@ export default {
             username:(state)=>{
                 return state.user.username
             },
-            noLogin(){
+            notLogin(){
                 return !this.login
             }
         })
@@ -108,8 +108,8 @@ export default {
     },
     mounted(){
         // this.noLogin = !this.login;
-        console.log(this.noLogin,this.login,"00000000000000")
-        console.log(this.login,this.username,"999999999999")
+        console.log(this.notLogin,this.login,"00000000000000")
+        console.log(this.notLogin,this.login,this.username,"999999999999")
     }
 }
 </script>

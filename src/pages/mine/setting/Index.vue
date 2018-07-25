@@ -13,13 +13,14 @@
                 <i>25BM</i>
             </li>
        </ul>
-        <button class="logOut">退&nbsp;出</button>
+        <button class="logOut" @click="logOut">退&nbsp;出</button>
     
     </app-content>
     
 </div>
 </template>
 <script>
+import Vuex from "vuex";
 export default {
     data(){
         return{
@@ -37,6 +38,10 @@ export default {
     methods:{
         goAboutAction(){
             this.$router.push({name:'about'})
+        },
+        logOut(){
+             this.$store.dispatch("user/modifyUsername",'')
+             this.$router.push('/')
         }
     }
 }
