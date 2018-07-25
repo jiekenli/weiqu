@@ -67,10 +67,13 @@ export default {
     },
     computed:{  
         ...Vuex.mapGetters({
-            login:"isLogin"}),
+            login:"user/isLogin"}),
         ...Vuex.mapState({
             username:(state)=>{
                 return state.user.username
+            },
+            noLogin(){
+                return !this.login
             }
         })
     },
@@ -104,9 +107,9 @@ export default {
         // }
     },
     mounted(){
-        this.noLogin = !this.login;
-       console.log(this.noLogin,this.login)
-       console.log(this.login,this.username)
+        // this.noLogin = !this.login;
+        console.log(this.noLogin,this.login,"00000000000000")
+        console.log(this.login,this.username,"999999999999")
     }
 }
 </script>

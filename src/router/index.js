@@ -14,11 +14,11 @@ import addpic from '../pages/published/addpic/addpic.vue'
 
 // 我的页面相关路由
 import myRelease from '../pages/mine/myRelease/Index.vue'
-import collection from '../pages/mine/collection/collection.vue'
+import Collection from '../pages/mine/collection/Index.vue'
 // import setting from '../pages/mine/setting/setting.vue'
 
-import recommended from '../pages/mine/recommended/recommended.vue'
-import near from '../pages/mine/near/near.vue'
+import Recommended from '../pages/mine/recommended/Index.vue'
+import Near from '../pages/mine/near/Index.vue'
 // 帮助页面路由
 import Help from '../pages/mine/help/Index.vue';
 import Instructions from '../pages/mine/help/Instructions.vue';
@@ -106,7 +106,7 @@ const routes = [
             // 我的发布页面
             {name:'myRelease',path:'myRelease',component: myRelease},
             // 我的收藏
-            {name: 'collection',path: '/collection',component: collection},   
+            {name: 'collection',path: 'collection',component: Collection},   
             // 钱包
             {name: 'wallet', path: 'wallet', component: Wallet,
                 children:[
@@ -123,9 +123,9 @@ const routes = [
                 ]
             },
              // 推荐给伙伴
-             {name: 'recommended', path: '/recommended',component: recommended},
+             {name: 'recommended', path: 'recommended',component: Recommended},
              // 附近的人
-            { name: 'near',path: '/near', component: near},
+            { name: 'near',path: 'near', component: Near},
             // 帮助
             {name: 'help',path: 'help',component:Help,
                 children:[

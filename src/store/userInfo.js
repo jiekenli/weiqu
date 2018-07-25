@@ -1,6 +1,6 @@
 
 const state = {
-    username:123,
+    username:null,
     useId:null,
     password:null,
     sex:null
@@ -31,7 +31,7 @@ const actions = {
 }
 
 export default {
-    
+    namespaced: true,
     state,
     getters,
     mutations,

@@ -1,30 +1,22 @@
-/*
-首页的轮播请求接口
-参数：
-    __t:时间戳
-*/
-const HOME_BANNER_URL = '/v4/api/billboard/home';
 
 /*
-正在上映的请求接口
+发送短信验证码接口
+url:http://127.0.0.1:8080/user/getAuthCode
 参数：
-    __t：时间戳
-    page: 页数
-    count：数量
-*/
-const NOW_PLAYING_URL = '/v4/api/film/now-playing';
+    Phone
+*/ 
+const GET_AuthCode_URL='/user/getAuthCode';
 
 /*
-即将上映的请求接口
+登录的接口
+http://127.0.0.1:8080/user/login
 参数：
-    __t：时间戳
-    page: 页数
-    count：数量
+Phone：手机号码
+authCode：验证码
 */
-const COMING_SOON_URL = '/v4/api/film/coming-soon';
+const GET_LOGIN_URL='/user/login';
 
 export default {
-    HOME_BANNER_URL,
-    NOW_PLAYING_URL,
-    COMING_SOON_URL
+    GET_AuthCode_URL,
+    GET_LOGIN_URL
 }
