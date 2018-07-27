@@ -1,0 +1,40 @@
+{
+	"Topic":{
+		"User": {
+			"Id":1,
+			"username":"微趣小可爱",
+			"portraitURL":"../img/xhdpi/home-prc1.png"
+		},
+		"Id":5,
+		"context":"lucky李乐祺，简直是化妆品狂魔啊！看见妈妈在化妆，眼睛一下就发光了哈哈哈！“妈妈我要这个粉饼口红睫毛！”lucky大名也曝光啦，叫李乐祺。lucky大名也曝光啦，叫李乐祺。",
+		"pictureUrl": "../img/xhdpi/home-prc1.png,../img/xhdpi/home-prc1.png,../img/xhdpi/home-prc1.png",
+		"createDate": "2018.07.02",
+		"collectNumber": 521,
+		"rewardNumber": 520,
+		"replyNumber": 530,
+		"likeNumber": 520,
+		"isCollect":0,
+ 		"isLike":0
+	},
+	"Replys":[
+		{
+			"User":{
+				"id":1,
+				"username":"评论的用户名",
+				"portraitURL":"../img/xhdpi/home-prc1.png"
+			},
+			"id":2,
+				"context":"评论内容",
+				"createDate":"2018.07.08"
+			},
+			{
+			"User": {
+				"id":3,
+				"username":"评论的用户名"
+			},
+			"id":3,
+			"context":"评论内容",
+			"createDate":"2018.04.08"
+		}
+	]
+}

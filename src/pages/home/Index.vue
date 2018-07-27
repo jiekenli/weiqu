@@ -2,88 +2,75 @@
 <div>
     <app-header :title="conten">
     </app-header>
-    <app-content>
-
-   
-
-
-    <div v-show="page=='recommended'">
-        <ul class="list">
-            <li class="item">
-                <div class="top">
-                    <div class="head-img-wrap">
-                        <span class="head-img">
-                            <img src="../../../public/img/xhdpi/home-prc1.png">
-                        </span>
-                        <div class="top-middle">
-                            <p class="title">微趣小可爱</p>
-                            <p class="time">2018.03.02</p>
-                        </div>
-                    </div>
-                    <div class="arrow-wrap " @click="tabAct">
-                        <span class="iconfont icon-arrow-down"></span>
-                        <ul class="tab-list" v-show="tabShow">
-                            <li class="tab-line"></li>
-                            <li class="tab-item">关注</li>
-                            <li class="tab-item">我不感兴趣</li>
-                        </ul>
-                    </div>
-                </div> 
-                <div class="text">
-                    lucky李乐祺，简直是化妆品狂魔啊！看见妈妈在化妆，眼睛一下就发光了哈哈哈！“妈妈我要这个粉饼口红睫毛！”lucky大名也曝光啦，叫李乐祺。lucky大名也曝光啦，叫李乐祺。
+    <app-content ref="content" style="bottom: .71rem;">
+        <div v-show="page=='recommended'">
+            <user-item v-for="(item,index) in recommendList">
+                <span class="head-img" slot="head-img">
+                    <img :src="item.portraitURL" @click="goUserDetail(item.userId)">
+                </span>
+                <p class="title" slot="title">{{item.username}}</p>
+                <p class="time" slot="time">{{item.createDate}}</p>
+                <div class="arrow-wrap" @click="tabAct(index)" slot="arrow-wrap">
+                    <span class="iconfont icon-arrow-down"></span>
+                    <ul class="tab-list" v-show="tabShow && selectIndex == index">
+                        <li class="tab-line"></li>
+                        <li class="tab-item">关注</li>
+                        <li class="tab-item">我不感兴趣</li>
+                    </ul>
                 </div>
-                <ul class="img-list">
-                    <li class="img-item">
-                        <img src="../../../public/img/xhdpi/home-prc1.png">
-                    </li>
-                    <li class="img-item">
-                        <img src="../../../public/img/xhdpi/home-prc1.png">
-                    </li>
-                    <li class="img-item">
-                        <img src="../../../public/img/xhdpi/home-prc1.png">
-                    </li>
-                </ul>
-                <ul class="btn-list">
-                    <li class="btn-item">
-                        <span class="img">
-                            <img src="../../../public/img/xhdpi/安卓 copy 37.png" alt="">
-                        </span>
-                        <span class="btn-text">520</span>
-                        <span class="btn-line"></span>
-                    </li>
-                    <li class="btn-item">
-                        <span class="img">
-                            <img src="../../../public/img/xhdpi/安卓 copy 35.png" alt="">
-                        </span>
-                        <span class="btn-text">520</span>
-                        <span class="btn-line"></span>
-                    </li>
-                    <li class="btn-item">
-                        <span class="img">
-                            <img src="../../../public/img/xhdpi/安卓 copy 7.png" alt="">
-                        </span>
-                        <span class="btn-text">520</span>
-                        <span class="btn-line"></span>
-                    </li>
-                    <li class="btn-item">
-                        <span class="img">
-                            <img src="../../../public/img/xhdpi/安卓 copy 33.png" alt="">
-                        </span>
-                        <span class="btn-text">520</span>
-                    </li>
-                </ul>
-            </li>
-        </ul>
-    </div>
-    <div v-show="page=='special'">
-        <h1>特别关注</h1>
-    </div> 
-
+                <div class="text" slot="text" @click="goPostsDetail(item.topicId)">
+                    {{item.context}}
+                </div>
+                <li class="img-item" slot="img-item" @click="goPostsDetail(item.topicId)">
+                    <img :src="item.pictureUrl.split(',')[0]">
+                </li>
+                <li class="img-item" slot="img-item" @click="goPostsDetail(item.topicId)">
+                    <img :src="item.pictureUrl.split(',')[1]">
+                </li>
+                <li class="img-item" slot="img-item" @click="goPostsDetail(item.topicId)">
+                    <img :src="item.pictureUrl.split(',')[2]">
+                </li>
+                <span class="btn-text" slot="btn-text1">{{item.collectNumber}}</span>
+                <span class="btn-text" slot="btn-text2">{{item.rewardNumber}}</span>
+                <span class="btn-text" slot="btn-text3">{{item.replyNumber}}</span>
+                <span class="btn-text" slot="btn-text4">{{item.likeNumber}}</span>
+            </user-item>
+        </div>
+        <div v-show="page=='special'">
+            <user-item v-for="(item,index) in attentionList">
+                <span class="head-img" slot="head-img">
+                    <img :src="item.User.portraitURL" @click="goUserDetail(item.User.Id)">
+                </span>
+                <p class="title" slot="title">{{item.User.username}}</p>
+                <p class="time" slot="time">{{item.createDate}}</p>
+                <span class="focus-btn" slot="focus-btn">
+                    已关注
+                </span>
+                <div class="text" slot="text" @click="goPostsDetail(item.Id)">
+                    {{item.context}}
+                </div>
+                <li class="img-item" slot="img-item" @click="goPostsDetail(item.Id)">
+                    <img :src="item.pictureUrl.split(',')[0]">
+                </li>
+                <li class="img-item" slot="img-item" @click="goPostsDetail(item.Id)">
+                    <img :src="item.pictureUrl.split(',')[1]">
+                </li>
+                <li class="img-item" slot="img-item" @click="goPostsDetail(item.Id)">
+                    <img :src="item.pictureUrl.split(',')[2]">
+                </li>
+                <span class="btn-text" slot="btn-text1">{{item.collectNumber}}</span>
+                <span class="btn-text" slot="btn-text2">{{item.rewardNumber}}</span>
+                <span class="btn-text" slot="btn-text3">{{item.replyNumber}}</span>
+                <span class="btn-text" slot="btn-text4">{{item.likeNumber}}</span>
+            </user-item>
+        </div> 
     </app-content>
+    <router-view></router-view>
 </div>
-
 </template>
 <script>
+import userItem from "./userItem.vue";
+import {getRecommendPage,getAttentionPage} from "../../services/homeService.js";
 export default {
     data(){
         return{
@@ -98,155 +85,76 @@ export default {
                 showleft:true,
                 searchDetails:false
             },
-            tabShow: false
+            tabShow: false,
+            selectIndex: 0,
+            recommendList: [],
+            attentionList: [],
+            recommendPage: 1,
+            attentionPage: 1
         }
     },
-
     methods: {
-        tabAct () {
+        tabAct (index) {
             this.tabShow = !this.tabShow;
+            this.selectIndex = index;
+        },
+        getRecommend () {
+            //初始化推荐页面数据
+            getRecommendPage(this.recommendPage).then(data=>{
+                this.recommendList = data;
+                //数据渲染完后更新滚动视图
+                this.$nextTick(()=>{
+                    this.$refs.content.refreshDOM();
+                })
+            })
+        },
+        getAttention () {
+            //初始化特别关注数据
+            getAttentionPage(2).then(data=>{
+                this.attentionList = data;
+                this.$nextTick(()=>{
+                    this.$refs.content.refreshDOM();
+                })
+            })
+        },
+        //获得页面初始化数据
+        getInitData(){
+            //判断要展示的界面有没有初始数据，没有就请求
+            if(this.page == 'recommended' && this.recommendList.length == 0){
+                this.getRecommend();
+            }
+            //判断要展示的界面有没有初始数据，没有就请求
+            if(this.page == 'special' && this.attentionList.length == 0){
+                this.getAttention();
+            }
+        },
+        goUserDetail (id) {
+            this.$router.push({
+                name: "HomeUserDetail",
+                params: {
+                    userId: id
+                }
+            })
+        },//点击进入帖子详情页
+        goPostsDetail (id) {
+            this.$router.push({
+                name: "homePostDetail",
+                params: {
+                    id
+                }
+            })
         }
+    },
+    components: {
+        'user-item': userItem
     },
     mounted(){
-        this.$pubsub.$on('show-page',(data)=>{
-            this.page=data
+        this.getInitData();
+        //头部点击切换时,初始化相应数据
+        this.$pubsub.$on('showPage',(data)=>{
+            this.page = data;
+            this.getInitData();
         })
     }
 }
 </script>
-<style scoped>
-    .item {
-        position:relative;
-        padding-right: .16rem;
-        padding-left: .16rem;
-        margin-top: .1rem;
-        background-color: #fff;
-        width: 100%;
-        box-sizing: border-box;
-        padding-top: .1rem;
-    }
-    .arrow-wrap {
-        position: relative;
-    }
-    .tab-list {
-        position: absolute;
-        width: .89rem;
-        text-align: center;
-        background: #FFFFFF;
-        box-shadow: 0 0 3px 0 rgba(0,0,0,0.50);
-        border: 1px solid #999999;
-        right: 0.06rem;
-        top: 78%;
-    }
-    .tab-item {
-        height: .27rem;
-        line-height: .27rem;
-        font-family: PingFangSC-Regular;
-        font-size: .12rem;
-        color: #333333;
-        letter-spacing: 0;
-    }
-    .tab-line {
-        position: absolute;
-        width: 100%;
-        height: 1px;
-        background: #999;
-        opacity: 0.5;
-        top: .27rem;
-    }
-    .top {
-        display: flex;
-        justify-content: space-between;
-        margin-bottom: .07rem;
-    }
-    .head-img-wrap {
-        display: flex;
-    }
-    .head-img {
-        width: .4rem;
-        height: .4rem;
-        margin-right: .08rem;
-    }
-    .head-img img {
-        width: 100%;
-        border-radius: 50%;
-        height: 100%;
-    }
-    .text {
-        font-family: PingFangSC-Regular;
-        max-height: .6rem;
-        line-height: .2rem;
-        margin-bottom: .08rem;
-        text-overflow: ellipsis;
-        overflow: hidden;
-    }
-    .img-list {
-        display: flex;
-
-    }
-    .img-item {
-        flex: 1;
-        width: 1.06rem;
-        height: 1.06rem;
-        margin-right: .05rem;
-    }
-    .img-item:last-child {
-        margin-right: 0;
-    }
-    .img-item img {
-        width: 100%;
-        border-radius: .04rem;
-    }
-    .title {
-        height: .2rem;
-        line-height: .2rem;
-        color: #333;
-        font-family: PingFangSC-Regular;
-    }
-    .time {
-        font-family: SourceSansPro-Regular;
-        font-size: .12rem;
-        color: #999;
-    }
-    .top .iconfont {
-        font-size: .2rem;
-        color: #979797;
-        line-height: .4rem;
-        margin-right: .06rem;
-    }
-    .btn-list {
-        display: flex;
-    }
-    .btn-item {
-        position: relative;
-        flex: 1;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-    .btn-item .img {
-        width: .2rem;
-        margin-right: .04rem;
-    }
-    .btn-item .img img {
-        width: 100%;
-    }
-    .btn-text {
-        font-family: SourceSansPro-Regular;
-        font-size: .12rem;
-    }
-    .btn-list {
-        height: .16rem;
-        line-height: .16rem;
-        margin-top: .13rem;
-        padding-bottom: .15rem;
-    }
-    .btn-line {
-        position: absolute;
-        right: 0;
-        width: .01rem;
-        height: .12rem;
-        background-color: #979797;
-    }
-</style>
-

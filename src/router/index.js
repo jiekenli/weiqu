@@ -3,6 +3,8 @@ import Router from 'vue-router'
 Vue.use(Router);
 
 import Home from '../pages/home/Index.vue'
+import HomeUserDetail from "../pages/home/userDetail.vue";
+import homePostDetail from "../pages/home/postsDetail.vue";
 import focus from '../pages/focus/Index.vue'
 import published from '../pages/published/Index.vue'
 import message from '../pages/message/Index.vue'
@@ -34,7 +36,22 @@ const routes = [
         name: 'home',
         path: '/home',
         alias: '/homes',
-        component: Home
+        component: Home,
+        children: [
+            {
+                name: "HomeUserDetail",
+                path: "user-detail/:userId",
+                component: HomeUserDetail,
+                props: true
+            },
+
+            {
+                name: "homePostDetail",
+                path: "post-detail/:id",
+                component: homePostDetail,
+                props: true
+            }
+        ]
     },
     {
         name: 'focus',
