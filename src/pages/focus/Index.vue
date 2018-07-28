@@ -31,7 +31,7 @@ export default {
     },
     mounted(){
     this.$pubsub.$on('show-page',(data)=>{
-        this.page=data
+        this.page = data
     })
 }
 }
