@@ -3,8 +3,8 @@ import Router from 'vue-router'
 Vue.use(Router);
 
 import Home from '../pages/home/Index.vue'
-import HomeUserDetail from "../pages/home/userDetail.vue";
-import homePostDetail from "../pages/home/postsDetail.vue";
+import HomeUserDetail from "../pages/common/userDetail.vue";
+import homePostDetail from "../pages/common/postsDetail.vue";
 import focus from '../pages/focus/Index.vue'
 import published from '../pages/published/Index.vue'
 import message from '../pages/message/Index.vue'

@@ -61,7 +61,7 @@
 	</app-content>
 </template>
 <script type="text/javascript">
-import userItem from "./userItem.vue";
+import userItem from "../home/userItem.vue";
 import {PostsDetailPage,getSonPost} from "../../services/homeService.js";
 	export default {
 		props: ["id"],

@@ -43,7 +43,7 @@
 </template>
 <script type="text/javascript">
 import {getHomeUserPage, addCollectData} from "../../services/homeService.js";
-import userItem from "./userItem.vue";
+import userItem from "../home/userItem.vue";
 	export default {
 		props: ["userId"],
 		data () {
