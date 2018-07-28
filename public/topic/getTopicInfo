@@ -30,7 +30,8 @@
 			{
 			"User": {
 				"id":3,
-				"username":"评论的用户名"
+				"username":"评论的用户名",
+				"portraitURL":"../img/xhdpi/home-prc1.png"
 			},
 			"id":3,
 			"context":"评论内容",

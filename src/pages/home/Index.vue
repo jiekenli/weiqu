@@ -10,11 +10,11 @@
                 </span>
                 <p class="title" slot="title">{{item.username}}</p>
                 <p class="time" slot="time">{{item.createDate}}</p>
-                <div class="arrow-wrap" @click="tabAct(index)" slot="arrow-wrap">
-                    <span class="iconfont icon-arrow-down"></span>
+                <div class="arrow-wrap" slot="arrow-wrap">
+                    <span class="iconfont icon-arrow-down" @click="tabAct(index)"></span>
                     <ul class="tab-list" v-show="tabShow && selectIndex == index">
                         <li class="tab-line"></li>
-                        <li class="tab-item">关注</li>
+                        <li class="tab-item" @click="addAttention(item.topicId)">关注</li>
                         <li class="tab-item">我不感兴趣</li>
                     </ul>
                 </div>
@@ -70,7 +70,7 @@
 </template>
 <script>
 import userItem from "./userItem.vue";
-import {getRecommendPage,getAttentionPage} from "../../services/homeService.js";
+import {getRecommendPage,getAttentionPage,addAttentionData} from "../../services/homeService.js";
 export default {
     data(){
         return{
@@ -143,6 +143,18 @@ export default {
                     id
                 }
             })
+        },//点击（关注按钮），添加关注
+        addAttention (topicId) {
+            this.tabShow = false;
+            addAttentionData(topicId).then(data=>{
+                if(data.data.code == 200) {
+                    console.log("关注成功");
+                    console.log(topicId)
+                }
+                this.$nextTick(()=>{
+                    this.$refs.content.refreshDOM();
+                })
+            })
         }
     },
     components: {
@@ -151,7 +163,7 @@ export default {
     mounted(){
         this.getInitData();
         //头部点击切换时,初始化相应数据
-        this.$pubsub.$on('showPage',(data)=>{
+        this.$pubsub.$on('show-page',(data)=>{
             this.page = data;
             this.getInitData();
         })

@@ -65,6 +65,22 @@ export function addCollectData(id) {
 		})
 	})
 }
+//点击（关注按钮），添加关注
+export function addAttentionData(id) {
+	return new Promise((resolve,reject)=>{
+		axios.get(API.HOME_ADD_COLLECT,{
+			params: {
+				topicId: id
+			}
+		})
+		.then(res=>{
+			resolve(res)
+		})
+		.catch(err=>{
+			console.log(err);
+		})
+	})
+}
 //点击（帖子或评论按钮），进入帖子详情页
 export function PostsDetailPage(id) {
 	return new Promise((resolve,reject)=>{

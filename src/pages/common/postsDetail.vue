@@ -8,13 +8,14 @@
 		</div>
 		<user-item>
 		    <span class="head-img" slot="head-img">
-		        <img :src="user.portraitURL">
+		        <img :src="user.portraitURL" @click="goUserDetailPage(user.Id)">
 		    </span>
 		    <!-- <p class="title" slot="title">{{postsInfo.User.username}}</p> 这样多次.写报错-->
 		    <p class="title" slot="title">{{user.username}}</p>
 		    <p class="time" slot="time">{{postsInfo.createDate}}</p>
 		    <span class="star-btn" slot="star-btn" @click="collectIconAct(postsInfo.Id)">
-		        <!-- <img :src="CollectIconSrc[index]"> -->
+	        <img src="img/xhdpi/安卓 copy 5.png" v-show="postsInfo.isCollect ? false : true">
+	        <img src="img/xhdpi/安卓 copy 6.png" v-show="postsInfo.isCollect ? true : false">
 		    </span>
 		    <div class="text" slot="text">
 		        {{postsInfo.context}}
@@ -38,7 +39,7 @@
 			<div class="comments-main" v-for="(item,index) in commentsList">
 				<div class="comments-top">
 					<span class="user-img">
-						<img src="img/xhdpi/home-prc1.png">
+						<img :src="item.User.portraitURL">
 					</span>
 					<p class="user-name">{{item.User.username}}</p>
 					<p class="comments-time">{{item.createDate}}</p>
@@ -46,23 +47,26 @@
 						<img src="img/xhdpi/安卓 copy 7.png">
 					</span>
 				</div>
-				<div class="comments-speak" @click="getSonPost(item.id,index)">
+				<div class="comments-speak">
 					{{item.context}}
+					<p class="isShow-btn" @click="getSonPost(item.id,index)">
+						{{(selectIndex === index) && isShow ? "收起" : "展开"}}
+					</p>
 				</div>
-				<ul class="comments-reply-box" v-for="(item,index) in sonPostList">
-					<li class="comment-reply-item">
+				<ul class="comments-reply-box" v-show="isShow && (selectIndex === index)">
+					<li class="comment-reply-item"  v-for="(item,i) in sonPostList" :key="i">
 						<span class="comment-name">{{item.User.username}}:</span>
 						{{item.context}}
-						<p class="time">{{item.createDate}}</p>
+						<p class="time"><span class="comment-name">评论时间: </span>{{item.createDate}}</p>
 					</li>
 				</ul>
-			</div>
+			</div><!--  comments-main -->
 		</div>
 	</app-content>
 </template>
 <script type="text/javascript">
 import userItem from "../home/userItem.vue";
-import {PostsDetailPage,getSonPost} from "../../services/homeService.js";
+import {PostsDetailPage,getSonPost,addCollectData} from "../../services/homeService.js";
 	export default {
 		props: ["id"],
 		data () {
@@ -72,26 +76,45 @@ import {PostsDetailPage,getSonPost} from "../../services/homeService.js";
 				user: {},
 				picList: [],
 				sonPostList: [],
-				sonPostPage: 1
+				sonPostPage: 1,
+				isShow: false,
+				selectIndex: -1
 			}
 		},
 		components: {
 			'user-item': userItem
 		},
-		methods: {
+		methods: {//点击切换添加收藏
 			collectIconAct (id) {
-
+				addCollectData(id).then(data=>{
+					if(data.data.code == 200) {
+						console.log("收藏成功");
+						this.$nextTick(()=>{
+							this.$refs.content.refreshDOM();
+						})
+					}
+				})
 			},
 			goBack () {
 				this.$router.go(-1);
 			},//点击(一级评论），获取此评论下面的二级评论的信息
-			getSonPost (id) {
+			getSonPost (id,index) {
+				this.isShow = !this.isShow;
+				this.selectIndex = index;
 				getSonPost(id,this.sonPostPage).then(data=>{
 					console.log(data)
 					this.sonPostList = data;
 					this.$nextTick(()=>{
 						this.$refs.content.refreshDOM();
 					})
+				})
+			},//点击头像进入用户详情页
+			goUserDetailPage (userId) {
+				this.$router.push({
+					name:"HomeUserDetail",
+					params: {
+						userId
+					}
 				})
 			}
 		},
@@ -138,6 +161,7 @@ import {PostsDetailPage,getSonPost} from "../../services/homeService.js";
 		margin-top: .1rem;
 		background-color: #fff;
 		padding-left: .14rem;
+		padding-bottom: .2rem;
 	}
 	.components-title {
 		font-family: SourceSansPro-Regular;
@@ -204,8 +228,18 @@ import {PostsDetailPage,getSonPost} from "../../services/homeService.js";
 		font-size: .13rem;
 		color: #3F3F3F;
 		line-height: .19rem;
+		margin-bottom: .05rem;
+    padding-bottom: .05rem;
+    border-bottom: 1px dotted #333;
 	}
 	.comment-name{
 		color: #68A2F7;
+	}
+	.isShow-btn {
+		height: .2rem;
+		line-height: .2rem;
+		color: #333;
+		font-family: PingFangSC-Regular;
+		text-align: right;
 	}
 </style>

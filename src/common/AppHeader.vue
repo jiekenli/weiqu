@@ -48,7 +48,7 @@ export default {
     methods: {
         navAction(flag){
         //切换界面
-        this.$pubsub.$emit('showPage',flag)
+        this.$pubsub.$emit('show-page',flag)
         this.showFlag = flag;
         },
         gohome(){
