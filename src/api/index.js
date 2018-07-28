@@ -1,3 +1,22 @@
+
+/*
+发送短信验证码接口
+url:http://127.0.0.1:8080/user/getAuthCode
+参数：
+    Phone
+*/ 
+const GET_AuthCode_URL='/user/getAuthCode';
+
+/*
+登录的接口
+http://127.0.0.1:8080/user/login
+参数：
+Phone：手机号码
+authCode：验证码
+*/
+const GET_LOGIN_URL='/user/login';
+
+
 //首页/推荐获取帖子
 const HOME_RECOMMEND_URL = "/topic/getTopicPage";
 //首页/特别关注数据
@@ -20,5 +39,7 @@ export default {
     HOME_ADD_COLLECT,
     HOME_POSTS_DETAIL,
     HOME_SON_POST,
-    HOME_ADD_ATTENTION
+    HOME_ADD_ATTENTION,
+    GET_AuthCode_URL,
+    GET_LOGIN_URL
 }

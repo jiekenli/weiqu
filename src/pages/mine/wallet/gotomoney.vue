@@ -1,9 +1,9 @@
 <template>
-<div>
+<div class="pages bg1">
     <app-header :title="conten">
     </app-header>
-    <app-content>
-        <h1>我的收藏页面</h1>
+    <app-content  id="pageContent">
+        <h1>提现页面</h1>
     
     </app-content>
 </div>
@@ -13,7 +13,7 @@ export default {
     data(){
         return{
             conten:{
-                left:'我的收藏',
+                left:'提现',
                 show:false,
                 rightshow:false,
                 arrowright:true,

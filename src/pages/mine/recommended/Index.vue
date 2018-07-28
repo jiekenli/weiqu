@@ -1,9 +1,9 @@
 <template>
-<div>
+<div class="page bg1">
     <app-header :title="conten">
     </app-header>
     <app-content>
-        <h1>提现页面</h1>
+        <h1>推荐给小伙伴页面</h1>
     
     </app-content>
 </div>
@@ -13,7 +13,7 @@ export default {
     data(){
         return{
             conten:{
-                left:'提现',
+                left:'推荐给小伙伴',
                 show:false,
                 rightshow:false,
                 arrowright:true,

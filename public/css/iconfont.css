@@ -1,5 +1,5 @@
 @font-face {font-family: "iconfont";
-  src:url('../fonts/iconfont.ttf?t=1531360430306') format('truetype');
+  src: url('../fonts/iconfont.ttf?t=1532423874450') format('truetype'); /* chrome, firefox, opera, Safari, Android, iOS 4.2+*/
 }
 
 .iconfont {
@@ -10,11 +10,7 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.icon-user:before { content: "\e6a3"; }
+.icon-zhifubao:before { content: "\e629"; }
 
-.icon-arrow-right:before { content: "\e6f5"; }
-
-.icon-arrow-down:before { content: "\e625"; }
-
-.icon-menu:before { content: "\e60b"; }
+.icon-weixin:before { content: "\e622"; }
 

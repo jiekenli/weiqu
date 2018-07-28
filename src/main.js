@@ -1,7 +1,7 @@
 import Vue from 'vue'
 import App from './App.vue'
 import router from './router'
-import store from './store/store.js'
+import store from './store'
 
 
 
@@ -15,10 +15,16 @@ Vue.component('app-content', AppContent);
 //公共的底部
 import foot from './common/foot.vue'
 Vue.component('app-foot', foot);
+// 公共滤镜
+import FilterContent from "./pages/components/FilterContent.vue";
+Vue.component('filter-content',FilterContent);
+
+Vue.prototype.$pubsub=new Vue();
 
 Vue.config.productionTip = false
 new Vue({
     router,
+    store,
     components: {
         App
     },

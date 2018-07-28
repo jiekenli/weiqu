@@ -1,8 +1,7 @@
 <template>
-<div>
-    <app-header :title="conten">
-    </app-header>
-    <div @click="jupUp" class="up">提交</div>
+<div class="pages bg1">
+    <app-header :title="conten"></app-header>
+        <div @click="submitAction" class="up">提交</div>
     <app-content>
         <textarea cols="30" rows="10"></textarea>
         <input type="number" placeholder="请输入你的手机号码">
@@ -24,8 +23,8 @@ export default {
         }
     },
     methods:{
-        jupUp(){
-            
+        submitAction(){
+           
         }
     }
 }
@@ -38,23 +37,7 @@ export default {
     color: #333;
     font-size: 0.16rem;
 }
-textarea{
-    display: inline-block;
-    margin-top:0.12rem;
-    margin-left: 0.15rem;
-    width: 3.3rem;
-    height: 2rem;
-    border: none;
-    outline: none;
-}
-input{
-    margin-top:0.12rem;
-    margin-left: 0.15rem;
-    width: 3.3rem;
-    height: 0.48rem;
-    color: #999999;
-    font-size: 0.14rem;
-    border: none;
-    outline: none;
+textarea{display: inline-block; margin:0.12rem .15rem 0.1rem;height: 2rem; border: none; outline: none;width: 3.3rem;}
+input{  margin:0 0.15rem;  width: 3.3rem;  height: 0.48rem;  line-height:.48rem; color: #424242;padding:0 .11rem;box-sizing: border-box; font-size: 0.14rem;  border: none;
 }
 </style>

@@ -2,7 +2,10 @@
 <!-- 公共的头部 -->
 <header class="app-header">
     <nav class="nav">
-         <div v-if="arrowright" id="arrow" @click="gohome"><img src="img/xhdpi/安卓 copy 41.png"></div>
+         <div v-if="arrowright" id="arrow" @click="gohome">  
+             <img src="img/xhdpi/安卓 copy 41.png">
+             <span  v-if="close" class="closeInfo">{{closeInfo}}</span>
+             </div>
         <li v-if="showleft" class="nav-item" @click="navAction('recommended')">
             <span :class="{active: showFlag=='recommended'}">{{left}}</span>
         </li>
@@ -26,6 +29,8 @@ export default {
     // },
     data(){
         return{
+            close:this.title.close,
+            closeInfo:this.title.closeInfo,
             left:this.title.left,
             right:this.title.right,
             //判断搜索图标是否显示
@@ -109,8 +114,11 @@ export default {
     padding-bottom: 0.02rem;
 }
 .nav .active{
-    color: #68A2F7;
-    border-bottom: 1px solid #68A2F7;
+    /* color: #68A2F7; */
+    color: #333;
+    font-size: .16rem;
+    font-weight: normal;
+    /* border-bottom: 1px solid #68A2F7; */
 }
     /* 搜索按钮的样式 */
     /* 向左箭头图标的样式 */
@@ -125,6 +133,7 @@ export default {
         display: block;
         height: 0.14rem;
         width: 0.14rem;
+        float:left;
         vertical-align: middle;
     }
     /* 搜索详情头部的样式 */
@@ -168,6 +177,12 @@ export default {
         vertical-align: top;
         width: 0.36rem;
     }
+    .closeInfo{
+        padding: 0.13rem  0 0.16rem;
+        float: left;
+        vertical-align: middle;
+        color:#B3B3B3 ;
+        }
     /* 向左箭头图标的样式 */
         /* #arrow{
         position: absolute;

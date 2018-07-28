@@ -1,9 +1,9 @@
 <template>
-<div>
-    <app-header :title="conten">
+<div class="page bg1">
+    <app-header :title="conten" id="myRelease">
     </app-header>
     <app-content>
-        <h1>推荐给小伙伴页面</h1>
+        <h1>我的发布页面</h1>
     
     </app-content>
 </div>
@@ -13,7 +13,7 @@ export default {
     data(){
         return{
             conten:{
-                left:'推荐给小伙伴',
+                left:'我的发布',
                 show:false,
                 rightshow:false,
                 arrowright:true,
@@ -25,4 +25,5 @@ export default {
 }
 </script>
 <style scoped>
+/* #myRelease{background:#fff;width:100%;height:100%;z-index: 6} */
 </style>

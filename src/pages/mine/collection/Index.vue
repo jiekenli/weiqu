@@ -1,9 +1,10 @@
 <template>
-<div>
+<div class="page bg1">
     <app-header :title="conten">
     </app-header>
     <app-content>
-            审核页面
+        <h1>我的收藏页面</h1>
+    
     </app-content>
 </div>
 </template>
@@ -12,7 +13,7 @@ export default {
     data(){
         return{
             conten:{
-                left:'审核',
+                left:'我的收藏',
                 show:false,
                 rightshow:false,
                 arrowright:true,
@@ -23,3 +24,5 @@ export default {
     }
 }
 </script>
+<style scoped>
+</style>
