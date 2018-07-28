@@ -1,0 +1,41 @@
+{
+			"Topic":{
+				"User":{
+					"Id":1,
+					"username":"微趣小可爱",
+"portraitURL":"../img/xhdpi/images/touxiang.png"
+},
+				"Id":1,
+				"context":"微趣用户发表动态文字内容微趣用户发表动态,微趣用户发表动态文字内容微趣用户发表动态,微趣用户发表动态文字内容微趣用户发表动态",
+"pictureUrl":["../img/xhdpi/images/release.png","../img/xhdpi/images/release.png","../img/xhdpi/images/release.png"],
+
+				"createDate":"2018.07.02",
+				"collectNumber":520,
+				"rewardNumber":520,
+				"replyNumber":520,
+				"likeNumber":520,
+				"isCollect":1,
+		 		"isLike":0
+			},
+			"Replys":[
+					{
+					"User":{
+						"id":1,
+						"username":"评论的用户名"
+						},
+						"id":1,
+						"context":"评论内容1",
+						"createDate":"评论的时间"
+					},
+					{
+						"User":{
+							"id":1,
+							"username":"评论的用户名"
+							},
+						"id":1,
+						"context":"评论内容2",
+						"createDate":"评论的时间"
+					}
+				
+			]
+}

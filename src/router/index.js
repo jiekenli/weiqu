@@ -5,7 +5,16 @@ Vue.use(Router);
 import Home from '../pages/home/Index.vue'
 import focus from '../pages/focus/Index.vue'
 import published from '../pages/published/Index.vue'
+
+//消息页面相关路由
 import message from '../pages/message/Index.vue'
+import Release from '../pages/message/Release.vue'
+import PostDetail from '../pages/message/PostDetail.vue'
+import Chat from '../pages/message/Chat.vue'
+
+
+
+
 import Mine from '../pages/mine/Index.vue'
 import serch from '../pages/home/serch/serch.vue'
 
@@ -61,11 +70,36 @@ const routes = [
         path: '/published',
         component: published
     },
+    //消息
     {
         name: 'message',
         path: '/message',
-        component: message
+        component: message,
+        //其他用户的所有发布
+        children:[
+			{
+				name:'release',
+				path:'/release',
+				component:Release,
+				//帖子详情
+				children:[
+					{
+						name:'postdetail',
+						path:'/postdetail',
+						component:PostDetail
+					}
+				]
+			},
+			{	
+				//聊天界面
+				name:'chat',
+				path:'/chat',
+				component:Chat
+			}
+        ]
     },
+    
+    
     { name: 'mine',path: '/mine', component: Mine,
         children:[
             // 设置
