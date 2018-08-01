@@ -32,6 +32,12 @@ const HOME_POSTS_DETAIL = "/topic/getTopicInfo";
 //点击(一级评论），获取此评论下面的二级评论的信息
 //参数: topicId page
 const HOME_SON_POST = "/reply/getReplyByParentId";
+//点击我不感兴趣,取消关注
+const HOME_CANCEL_COLLECT ="/user/deletedAttentionUser";
+//点击打赏弹出框中的（赏），进行打赏
+const HOME_ADD_REWARD = "/topic/addReward";
+//点赞接口
+const HOME_ADD_LIKE = "/topic/addLike";
 export default {
     HOME_RECOMMEND_URL,
     HOME_ATTENTIN_URL,
@@ -40,6 +46,9 @@ export default {
     HOME_POSTS_DETAIL,
     HOME_SON_POST,
     HOME_ADD_ATTENTION,
+    HOME_CANCEL_COLLECT,
     GET_AuthCode_URL,
-    GET_LOGIN_URL
+    GET_LOGIN_URL,
+    HOME_ADD_REWARD,
+    HOME_ADD_LIKE
 }

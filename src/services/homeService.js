@@ -65,12 +65,61 @@ export function addCollectData(id) {
 		})
 	})
 }
+//点击点赞
+export function addLikeData(id) {
+	return new Promise((resolve,reject)=>{
+		axios.get(API.HOME_ADD_LIKE,{
+			params: {
+				topicId: id
+			}
+		})
+		.then(res=>{
+			resolve(res)
+		})
+		.catch(err=>{
+			console.log(err);
+		})
+	})
+}
 //点击（关注按钮），添加关注
 export function addAttentionData(id) {
 	return new Promise((resolve,reject)=>{
 		axios.get(API.HOME_ADD_COLLECT,{
 			params: {
 				topicId: id
+			}
+		})
+		.then(res=>{
+			resolve(res)
+		})
+		.catch(err=>{
+			console.log(err);
+		})
+	})
+}
+//点击我不感兴趣,取消关注
+export function cancelAttentionData(id) {
+	return new Promise((resolve,reject)=>{
+		axios.get(API.HOME_CANCEL_COLLECT,{
+			params: {
+				topicId: id
+			}
+		})
+		.then(res=>{
+			resolve(res)
+		})
+		.catch(err=>{
+			console.log(err);
+		})
+	})
+}
+//点击打赏弹出框中的（赏），进行打赏 
+export function addRewardData(topicId,number) {
+	return new Promise((resolve,reject)=>{
+		axios.get(API.HOME_ADD_REWARD,{
+			params: {
+				topicId,
+				number
 			}
 		})
 		.then(res=>{

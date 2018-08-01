@@ -1,4 +1,5 @@
 <template>
+	<div>
 	<app-content style="top: 0;bottom: 0;z-index: 3" ref="content">
 		<div class="top-title">
 			<span class="arrow-left" @click="goBack">
@@ -29,8 +30,8 @@
 		    <li class="img-item" slot="img-item">
 		        <img :src="picList[2]">
 		    </li>
-		    <span class="btn-text" slot="btn-text1">{{postsInfo.collectNumber}}</span>
-		    <span class="btn-text" slot="btn-text2">{{postsInfo.rewardNumber}}</span>
+		    <span class="btn-text" slot="btn-text1" @click="tabShare()">{{postsInfo.collectNumber}}</span>
+		    <span class="btn-text" slot="btn-text2" @click="loadReward(postsInfo.Id,user.portraitURL)">{{postsInfo.rewardNumber}}</span>
 		    <span class="btn-text" slot="btn-text3">{{postsInfo.replyNumber}}</span>
 		    <span class="btn-text" slot="btn-text4">{{postsInfo.likeNumber}}</span>
 		</user-item>
@@ -63,9 +64,18 @@
 			</div><!--  comments-main -->
 		</div>
 	</app-content>
+	<reward v-if="rewardShow" 
+  :data="{rewardId,rewardFailed,rewardSuc}"
+  @closeAct="closeReward">
+      <img :src="rewardImg" slot="head-img">
+  </reward>
+  <!-- <share></share> -->
+</div>
 </template>
 <script type="text/javascript">
-import userItem from "../home/userItem.vue";
+import userItem from "../components/userItem.vue";
+import reward from "../components/reward.vue";
+import share from "../components/share.vue"
 import {PostsDetailPage,getSonPost,addCollectData} from "../../services/homeService.js";
 	export default {
 		props: ["id"],
@@ -78,11 +88,18 @@ import {PostsDetailPage,getSonPost,addCollectData} from "../../services/homeServ
 				sonPostList: [],
 				sonPostPage: 1,
 				isShow: false,
-				selectIndex: -1
+				selectIndex: -1,
+				rewardShow: false,//打赏页
+				rewardId: null,
+				rewardImg: null,
+				rewardFailed: false,
+				rewardSuc: false,
 			}
 		},
 		components: {
-			'user-item': userItem
+			'user-item': userItem,
+			reward,
+			share
 		},
 		methods: {//点击切换添加收藏
 			collectIconAct (id) {
@@ -116,7 +133,21 @@ import {PostsDetailPage,getSonPost,addCollectData} from "../../services/homeServ
 						userId
 					}
 				})
-			}
+			},
+			//点击弹出打赏页
+      loadReward (topicId,img) {
+        this.rewardShow = true;
+        this.rewardSuc = false;
+        this.rewardFailed = false;
+        this.rewardId = topicId;
+        this.rewardImg = img;
+      },
+			closeReward () {
+         this.rewardShow = false;
+      },//点击分享
+      tabShare () {
+        this.$pubsub.$emit("openShare");
+      }
 		},
 		mounted () {
 			PostsDetailPage(this.id).then(data=>{

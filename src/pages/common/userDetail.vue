@@ -1,4 +1,5 @@
 <template>
+<div>
 	<app-content ref="content" style="top: 0;bottom: 0;z-index: 3">
 		<div class="top-wrap">
 			<div class="bg-img-wrap">
@@ -34,22 +35,36 @@
 		    <li class="img-item" slot="img-item">
 		        <img :src="item.pictureUrl.split(',')[2]">
 		    </li>
-		    <span class="btn-text" slot="btn-text1">{{item.collectNumber}}</span>
-		    <span class="btn-text" slot="btn-text2">{{item.rewardNumber}}</span>
+		    <span class="btn-text" slot="btn-text1" @click="tabShare(item)">{{item.collectNumber}}</span>
+		    <span class="btn-text" slot="btn-text2" @click="loadReward(item.Id,item.User.portraitURL)">{{item.rewardNumber}}</span>
 		    <span class="btn-text" slot="btn-text3">{{item.replyNumber}}</span>
 		    <span class="btn-text" slot="btn-text4">{{item.likeNumber}}</span>
 		</user-item>
 	</app-content>
+	<reward v-if="rewardShow" 
+  :data="{rewardId,rewardFailed,rewardSuc}"
+  @closeAct="closeReward">
+      <img :src="rewardImg" slot="head-img">
+  </reward>
+  <!-- <share></share> -->
+</div>
 </template>
 <script type="text/javascript">
 import {getHomeUserPage, addCollectData} from "../../services/homeService.js";
-import userItem from "../home/userItem.vue";
+import userItem from "../components/userItem.vue";
+import reward from "../components/reward.vue";
+import share from "../components/share.vue";
 	export default {
 		props: ["userId"],
 		data () {
 			return {
 				userInfo: {},
-				userPosts: []
+				userPosts: [],
+				rewardShow: false,//打赏页
+				rewardId: null,
+				rewardImg: null,
+				rewardFailed: false,
+				rewardSuc: false,
 			}
 		},
 		computed: {
@@ -74,17 +89,33 @@ import userItem from "../home/userItem.vue";
 			},
 			goBack () {
 				this.$router.go(-1);
-			}
+			},
+			//点击弹出打赏页
+      loadReward (topicId,img) {
+        this.rewardShow = true;
+        this.rewardSuc = false;
+        this.rewardFailed = false;
+        this.rewardId = topicId;
+        this.rewardImg = img;
+      },
+			closeReward () {
+         this.rewardShow = false;
+      },//点击分享
+      tabShare (item) {
+        this.$pubsub.$emit("openShare");
+      }
 		},
 		components: {
-			'user-item': userItem
+			'user-item': userItem,
+			reward,
+			share
 		},
 		mounted () {
 			getHomeUserPage(this.userId).then(data=>{
 				this.userInfo = data.User;
 				this.userPosts = data.topics;
-				console.log(this.userInfo)
-				console.log(this.userPosts)
+				// console.log(this.userInfo)
+				// console.log(this.userPosts)
 				this.$nextTick(()=>{
 					this.$refs.content.refreshDOM();
 				})
