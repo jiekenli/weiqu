@@ -1,6 +1,6 @@
 
 const state = {
-    username:null,
+    username:true,
     useId:null,
     password:null,
     sex:null
@@ -9,11 +9,12 @@ const state = {
 const getters = {
     //判断用户是否登录
     isLogin(state){
-        if(state.username){
-            return true;
-        }else{
-            return false;
-        }
+        return state.username;
+        // if(state.username){
+        //     return true;
+        // }else{
+        //     return false;
+        // }
     }
 }
 
@@ -36,6 +37,5 @@ export default {
     getters,
     mutations,
     actions
-  
 }
 

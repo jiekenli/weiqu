@@ -3,19 +3,26 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "serve": "vue-cli-service serve --open --port 8000",
+    "start": "vue-cli-service serve --open --port 8000",
     "build": "vue-cli-service build"
   },
   "dependencies": {
     "axios": "^0.18.0",
-    "vue": "^2.5.16",
+    "iview": "^3.2.1",
+    "qs": "^6.6.0",
+    "vue": "^2.5.17",
+    "vue-axios": "^2.1.4",
     "vue-router": "^3.0.1",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "vuex-persist": "^2.0.0"
   },
   "devDependencies": {
     "@vue/cli-plugin-babel": "^3.0.0-rc.5",
     "@vue/cli-service": "^3.0.0-rc.5",
-    "vue-template-compiler": "^2.5.16"
+    "babel-plugin-import": "^1.11.0",
+    "less": "^3.9.0",
+    "less-loader": "^4.1.0",
+    "vue-template-compiler": "^2.5.17"
   },
   "postcss": {
     "plugins": {

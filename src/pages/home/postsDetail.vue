@@ -35,7 +35,7 @@
 		</user-item>
 		<div class="conments-box">
 			<h4 class="components-title">评论</h4>
-			<div class="comments-main" v-for="(item,index) in commentsList">
+			<div class="comments-main" v-for="(item,index) in commentsList" :key="index">
 				<div class="comments-top">
 					<span class="user-img">
 						<img src="img/xhdpi/home-prc1.png">
@@ -49,7 +49,7 @@
 				<div class="comments-speak" @click="getSonPost(item.id,index)">
 					{{item.context}}
 				</div>
-				<ul class="comments-reply-box" v-for="(item,index) in sonPostList">
+				<ul class="comments-reply-box" v-for="(item,index) in sonPostList" :key="index">
 					<li class="comment-reply-item">
 						<span class="comment-name">{{item.User.username}}:</span>
 						{{item.context}}

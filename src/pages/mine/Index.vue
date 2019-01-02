@@ -72,9 +72,9 @@ export default {
             username:(state)=>{
                 return state.user.username
             },
-            notLogin(){
-                return !this.login
-            }
+            // notLogin(){
+            //     return !this. 
+            // }
         })
     },
     methods:{

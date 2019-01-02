@@ -11,5 +11,4 @@ export function formatDate(val, format){
         let week = date.getDay();
         return '星期'+weekArr[week-1];
     }
-    
 }

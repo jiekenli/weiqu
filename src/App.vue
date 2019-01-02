@@ -9,8 +9,8 @@
     </keep-alive>
     
     <!-- 底部 -->
-    <app-foot>
-    </app-foot>
+    <!-- <app-foot>
+    </app-foot> -->
     
     
 
